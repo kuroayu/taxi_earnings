@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/input_button">
+
+    <fragment
+        android:id="@+id/input_button"
+        android:name="com.kuro.taxi_earnings.ui.fragment.RecordFragment"
+        android:label="@string/input_button_text">
+        <action
+            android:id="@+id/action_input_button_to_inputFragment"
+            app:destination="@id/inputFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/history_button"
+        android:name="com.kuro.taxi_earnings.ui.fragment.HistoryFragment"
+        android:label="@string/history_title">
+        <action
+            android:id="@+id/action_history_button_to_editFragment"
+            app:destination="@id/editFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/inputFragment"
+        android:name="com.kuro.taxi_earnings.ui.fragment.InputFragment"
+        android:label="@string/input_title" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.kuro.taxi_earnings.ui.fragment.EditFragment"
+        android:label="@string/edit_title" />
+
+    <fragment
+        android:id="@+id/initialSettingFragment"
+        android:name="com.kuro.taxi_earnings.ui.fragment.InitialSettingFragment"
+        android:label="InitialSettingFragment" />
+
+
+</navigation>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kuro.taxi_earnings.ui.viewmodel.RecordViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/total_now_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/total_now_text"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/total_text"
+        android:textSize="12sp"
+        android:textColor="@color/gray"
+        />
+
+    <TextView
+        android:id="@+id/total_now_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_now_title"
+        android:text="￥300,000" />
+
+    <ImageView
+        android:id="@+id/goal_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/total_now_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/ic_baseline_star_24"/>
+
+    <TextView
+        android:id="@+id/goal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/total_now_text"
+        app:layout_constraintStart_toEndOf="@+id/goal_icon"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/goal_text"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/goal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/total_now_text"
+        app:layout_constraintStart_toEndOf="@+id/goal_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"
+        android:text="@={viewModel.settingGoalText}"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/remaining_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/goal_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/ic_baseline_auto_graph_24"/>
+
+    <TextView
+        android:id="@+id/remaining_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/remaining_icon"
+        app:layout_constraintStart_toEndOf="@+id/remaining_icon"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/remaining_text"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/remaining_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/remaining_title"
+        app:layout_constraintStart_toStartOf="@+id/goal_text"
+        android:layout_marginTop="0dp"
+        android:text="￥300,000"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/daily_plan_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/remaining_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/ic_baseline_monetization_on_24"/>
+
+    <TextView
+        android:id="@+id/daily_plan_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/daily_plan_icon"
+        app:layout_constraintStart_toEndOf="@+id/daily_plan_icon"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/daily_plan_text"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/daily_plan_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/daily_plan_title"
+        app:layout_constraintStart_toStartOf="@+id/remaining_text"
+        android:layout_marginTop="0dp"
+        android:text="￥80,000"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/days_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/daily_plan_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/ic_baseline_calendar_today_24"/>
+
+    <TextView
+        android:id="@+id/days_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/days_icon"
+        app:layout_constraintStart_toEndOf="@+id/days_icon"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/days_text"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/days_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/days_title"
+        app:layout_constraintStart_toStartOf="@+id/daily_plan_text"
+        android:layout_marginTop="0dp"
+        android:text="￥3日"
+        android:textColor="@color/black"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/initial_input_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/input_button"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:text="@string/input_title"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </layout>

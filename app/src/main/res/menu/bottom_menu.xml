@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/input_button"
+        android:icon="@drawable/ic_baseline_edit_note_24"
+        android:title="@string/input_button_text"/>
+
+    <item
+        android:id="@+id/history_button"
+        android:icon="@drawable/ic_baseline_calendar_month_24"
+        android:title="@string/history_button_text"/>
+
+</menu>

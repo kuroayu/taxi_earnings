@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.kuro.taxi_earnings.ui.viewmodel.InputViewModel" />
+    </data>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/date_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/date_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/date_input_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/date_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/ic_baseline_edit_calendar_24"
+            />
+
+        <TextView
+            android:id="@+id/date_input_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/date_input_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/date_input_layout"
+            app:layout_constraintStart_toEndOf="@+id/date_image"
+            android:layout_marginStart="16dp"
+            android:text="@string/date"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/date_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/date_input_layout"
+            app:layout_constraintBottom_toBottomOf="@+id/date_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="@={viewModel.dateEdit}"
+            android:hint="2022/08/22"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/earning_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_input_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/earning_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/ic_baseline_attach_money_24"
+            app:layout_constraintBottom_toBottomOf="@+id/earning_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/earning_input_layout" />
+
+        <TextView
+            android:id="@+id/earning_input_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/sales"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/earning_input_layout"
+            app:layout_constraintStart_toEndOf="@+id/earning_image"
+            app:layout_constraintTop_toTopOf="@+id/earning_input_layout" />
+
+        <EditText
+            android:id="@+id/earning_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:hint="0円"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:inputType="number"
+            android:text="@={viewModel.earningEdit}"
+            app:layout_constraintBottom_toBottomOf="@+id/earning_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/earning_input_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/times_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/earning_input_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/times_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/ic_baseline_local_taxi_24"
+            app:layout_constraintBottom_toBottomOf="@+id/times_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/times_input_layout" />
+
+        <TextView
+            android:id="@+id/times_input_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/times"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/times_input_layout"
+            app:layout_constraintStart_toEndOf="@+id/times_image"
+            app:layout_constraintTop_toTopOf="@+id/times_input_layout" />
+
+        <EditText
+            android:id="@+id/times_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:hint="0回"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="@={viewModel.timesEdit}"
+            app:layout_constraintBottom_toBottomOf="@+id/times_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/times_input_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/month_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/times_input_layout"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/month_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/ic_baseline_fact_check_24"
+            app:layout_constraintBottom_toBottomOf="@+id/month_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/month_input_layout" />
+
+        <TextView
+            android:id="@+id/month_input_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/month"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/month_input_layout"
+            app:layout_constraintStart_toEndOf="@+id/month_image"
+            app:layout_constraintTop_toTopOf="@+id/month_input_layout" />
+
+
+        <EditText
+            android:id="@+id/month_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="@={viewModel.monthEdit}"
+            app:layout_constraintBottom_toBottomOf="@+id/month_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/month_input_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/goal_input_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/setting"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/goal_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_input_layout"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/border">
+
+        <ImageView
+            android:id="@+id/goal_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/ic_baseline_auto_graph_24"
+            app:layout_constraintBottom_toBottomOf="@+id/goal_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/goal_input_layout" />
+
+        <TextView
+            android:id="@+id/goal_input_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/total_goal_sales"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/goal_input_layout"
+            app:layout_constraintStart_toEndOf="@+id/goal_image"
+            app:layout_constraintTop_toTopOf="@+id/goal_input_layout" />
+
+        <EditText
+            android:id="@+id/goal_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:hint="0円"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="@={viewModel.initialSettingGoalText}"
+            app:layout_constraintBottom_toBottomOf="@+id/goal_input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/goal_input_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/input_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/input_button"
+        android:text="@string/save"
+        android:textSize="14sp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </layout>
