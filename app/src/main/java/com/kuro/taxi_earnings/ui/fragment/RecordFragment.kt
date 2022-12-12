@@ -26,6 +26,9 @@ class RecordFragment : Fragment() {
 
     lateinit var initSharedPreferences:SharedPreferences
 
+    var kbnPreferencesData by Delegates.notNull<String>()
+    var closingDateData by Delegates.notNull<String>()
+    var daysData by Delegates.notNull<Int>()
     var goalPreferencesData by Delegates.notNull<Int>()
 
 
@@ -73,8 +76,6 @@ class RecordFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
-       // viewModel.settingGoalText.value = goalPreferencesData.toString()
 
         binding.initialInputSaveButton.setOnClickListener {
             findNavController().navigate(R.id.action_input_button_to_inputFragment)

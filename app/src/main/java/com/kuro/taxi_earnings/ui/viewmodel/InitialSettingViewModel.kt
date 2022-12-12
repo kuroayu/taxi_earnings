@@ -19,13 +19,13 @@ class InitialSettingViewModel @Inject constructor(
 
     fun onButtonClick() {
         val initialSettingKbnString = initialSettingKbnText.value.toString()
-        initialSettingRepository.input(initialSettingKbnString)
+        initialSettingRepository.inputString("settingKbn",initialSettingKbnString)
         val initialSettingClosingDateString = initialSettingClosingDateText.value.toString()
-        initialSettingRepository.input(initialSettingClosingDateString)
+        initialSettingRepository.inputString("settingClosingDate",initialSettingClosingDateString)
         val initialSettingDaysString = initialSettingDaysText.value.toString()
-        initialSettingRepository.input(initialSettingDaysString)
+        initialSettingRepository.inputInt("settingDays",initialSettingDaysString)
         val initialSettingGoalString = initialSettingGoalText.value.toString()
-        initialSettingRepository.input(initialSettingGoalString)
+        initialSettingRepository.inputInt("settingGoal",initialSettingGoalString)
 
 
     }
