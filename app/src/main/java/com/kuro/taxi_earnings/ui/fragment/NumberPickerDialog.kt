@@ -11,6 +11,7 @@ import com.kuro.taxi_earnings.R
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+//月度区分用NumberPicker
 class NumberPickerDialog:DialogFragment() {
 
     private lateinit var dialogView: View
@@ -20,8 +21,8 @@ class NumberPickerDialog:DialogFragment() {
         val builder = AlertDialog.Builder(context)
 
         builder.setView(dialogView)
-        builder.setTitle("タイトル")
-        builder.setMessage("メッセージ")
+        builder.setTitle("何月分の売上か設定してください")
+        builder.setMessage("2022年12月度の区分で設定した場合、今回の売上は2022年10月分に振り分けられます")
         builder.setPositiveButton("OK"){dialog,id ->}
         builder.setNegativeButton("キャンセル"){dialog,id ->}
 
