@@ -12,12 +12,21 @@ class InitialSettingViewModel @Inject constructor(
     private val initialSettingRepository: InitialSettingRepository,
 ) : ViewModel() {
 
+    val initialSettingKbnText = MutableLiveData<String>()
+    val initialSettingClosingDateText = MutableLiveData<String>()
+    val initialSettingDaysText = MutableLiveData<String>()
     val initialSettingGoalText = MutableLiveData<String>()
 
     fun onButtonClick() {
+        val initialSettingKbnString = initialSettingKbnText.value.toString()
+        initialSettingRepository.input(initialSettingKbnString)
+        val initialSettingClosingDateString = initialSettingClosingDateText.value.toString()
+        initialSettingRepository.input(initialSettingClosingDateString)
+        val initialSettingDaysString = initialSettingDaysText.value.toString()
+        initialSettingRepository.input(initialSettingDaysString)
         val initialSettingGoalString = initialSettingGoalText.value.toString()
-        initialSettingRepository.input(
-            initialSettingGoalString)
+        initialSettingRepository.input(initialSettingGoalString)
+
 
     }
 

@@ -25,6 +25,7 @@ class RecordFragment : Fragment() {
     private val viewModel: RecordViewModel by viewModels()
 
     lateinit var initSharedPreferences:SharedPreferences
+
     var goalPreferencesData by Delegates.notNull<Int>()
 
 
@@ -41,7 +42,15 @@ class RecordFragment : Fragment() {
             findNavController().navigate(R.id.initialSettingFragment)
         }else{
             Log.d("goal",goalPreferencesData.toString())
+
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        goalPreferencesData = initSharedPreferences.getInt("settingGoal",-1)
+        viewModel.settingGoalText.value = goalPreferencesData.toString()
+
     }
 
     override fun onCreateView(
@@ -65,7 +74,7 @@ class RecordFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.settingGoalText.value = goalPreferencesData.toString()
+       // viewModel.settingGoalText.value = goalPreferencesData.toString()
 
         binding.initialInputSaveButton.setOnClickListener {
             findNavController().navigate(R.id.action_input_button_to_inputFragment)
@@ -74,4 +83,6 @@ class RecordFragment : Fragment() {
    //     binding.goalText.text = goalPreferencesData.toString()
 
     }
+
+
 }
