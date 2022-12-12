@@ -10,6 +10,7 @@
     <string name="remaining_text">目標まで残り</string>
     <string name="daily_plan_text">目標まで1日あたり</string>
     <string name="days_text">残り営業日数</string>
+    <string name="total_days_text">今月度の出勤日数</string>
     <string name="target_amount">目標金額：</string>
     <string name="total_sales">売上合計：</string>
     <string name="average_sales">売上平均：</string>
@@ -22,8 +23,7 @@
     <string name="month">月度区分</string>
     <string name="setting">設定</string>
     <string name="save">保存</string>
-    <string name="setting_deadline">月の締め日</string>
-    <string name="setting_goal">月の売上目標</string>
+    <string name="setting_closing_date">今月度の締め日</string>
     <string name="explanatory_text">トップ画面の設定から変更可能です</string>
     <string name="edit_title">営業履歴の変更</string>
     <string name="error_message">入力が完了していません</string>

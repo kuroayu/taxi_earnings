@@ -39,7 +39,8 @@ class InitialSettingFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.initialInputSaveButton.setOnClickListener {
 
-            if (!viewModel.initialSettingGoalText.value.isNullOrBlank()
+            if (!viewModel.initialSettingKbnText.value.isNullOrBlank() && !viewModel.initialSettingClosingDateText.value.isNullOrBlank() &&
+                !viewModel.initialSettingDaysText.value.isNullOrBlank() && !viewModel.initialSettingGoalText.value.isNullOrBlank()
             ) {
                 viewModel.onButtonClick()
                 findNavController().popBackStack()

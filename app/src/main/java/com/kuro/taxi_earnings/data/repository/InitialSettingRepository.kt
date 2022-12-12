@@ -8,14 +8,18 @@ class InitialSettingRepository @Inject constructor(
     @ApplicationContext private val context: Context
 ){
 
-    fun input(goalEdit: String) {
-
-        val goalInt = goalEdit.toInt()
-
+    fun inputInt(itemName:String ,item: String) {
+        val itemInt = item.toInt()
         context.getSharedPreferences("initial_setting", Context.MODE_PRIVATE).edit().apply {
-            putInt("settingGoal", goalInt)
+            putInt(itemName, itemInt)
             apply()
         }
+    }
 
+    fun inputString(itemName: String,item:String){
+        context.getSharedPreferences("initial_setting", Context.MODE_PRIVATE).edit().apply(){
+            putString(itemName,item)
+            apply()
+        }
     }
 }

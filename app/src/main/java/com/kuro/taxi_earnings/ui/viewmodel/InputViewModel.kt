@@ -33,7 +33,7 @@ class InputViewModel @Inject constructor(
     fun onButtonClick() {
 
         val initialSettingGoalString = initialSettingGoalText.value.toString()
-        initialSettingRepository.input(initialSettingGoalString)
+        initialSettingRepository.inputInt("settingGoal",initialSettingGoalString)
 
         //もし回数が未入力なら、０を足す
         val data = SalesData(
@@ -48,7 +48,7 @@ class InputViewModel @Inject constructor(
     }
 }
 
-
+//windws
 //class InputViewModelFactory(
 //    private val salesRepository: SalesRepository
 //) : ViewModelProvider.Factory {
