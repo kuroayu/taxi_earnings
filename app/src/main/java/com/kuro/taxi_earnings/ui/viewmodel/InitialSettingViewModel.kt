@@ -1,8 +1,11 @@
 package com.kuro.taxi_earnings.ui.viewmodel
 
+import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kuro.taxi_earnings.data.repository.InitialSettingRepository
+import com.kuro.taxi_earnings.ui.fragment.NumberPickerDialog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -12,22 +15,20 @@ class InitialSettingViewModel @Inject constructor(
     private val initialSettingRepository: InitialSettingRepository,
 ) : ViewModel() {
 
-    val initialSettingKbnText = MutableLiveData<String>()
+    private val _initialSettingKbnText:MutableLiveData<String> = MutableLiveData("")
+    val initialSettingKbnText:LiveData<String> = _initialSettingKbnText
+
     val initialSettingClosingDateText = MutableLiveData<String>()
     val initialSettingDaysText = MutableLiveData<String>()
     val initialSettingGoalText = MutableLiveData<String>()
 
+
+
     fun onButtonClick() {
-        val initialSettingKbnString = initialSettingKbnText.value.toString()
-        initialSettingRepository.inputString("settingKbn",initialSettingKbnString)
-        val initialSettingClosingDateString = initialSettingClosingDateText.value.toString()
-        initialSettingRepository.inputString("settingClosingDate",initialSettingClosingDateString)
-        val initialSettingDaysString = initialSettingDaysText.value.toString()
-        initialSettingRepository.inputInt("settingDays",initialSettingDaysString)
-        val initialSettingGoalString = initialSettingGoalText.value.toString()
-        initialSettingRepository.inputInt("settingGoal",initialSettingGoalString)
-
-
+        initialSettingRepository.inputString("settingKbn",initialSettingKbnText.value.toString())
+        initialSettingRepository.inputString("settingClosingDate",initialSettingClosingDateText.value.toString())
+        initialSettingRepository.inputInt("settingDays",initialSettingDaysText.value.toString())
+        initialSettingRepository.inputInt("settingGoal",initialSettingGoalText.value.toString())
     }
 
 

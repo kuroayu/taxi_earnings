@@ -1,6 +1,6 @@
 package com.kuro.taxi_earnings.ui.fragment
 
-import android.annotation.SuppressLint
+
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,13 +8,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.databinding.adapters.CompoundButtonBindingAdapter.setChecked
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kuro.taxi_earnings.R
 import com.kuro.taxi_earnings.databinding.FragmentRecordBinding
-import com.kuro.taxi_earnings.ui.viewmodel.InputViewModel
 import com.kuro.taxi_earnings.ui.viewmodel.RecordViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.properties.Delegates
@@ -34,6 +33,8 @@ class RecordFragment : Fragment() {
 
     private lateinit var binding: FragmentRecordBinding
 
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -45,7 +46,6 @@ class RecordFragment : Fragment() {
             findNavController().navigate(R.id.initialSettingFragment)
         }else{
             Log.d("goal",goalPreferencesData.toString())
-
         }
     }
 

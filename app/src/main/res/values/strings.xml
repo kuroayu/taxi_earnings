@@ -3,6 +3,7 @@
     <string name="input_button_text">管理</string>
     <string name="history_button_text">履歴</string>
     <string name="input_title">売上入力</string>
+    <string name="initialSetting_title">初期設定</string>
     <string name="history_title">営業履歴</string>
     <string name="total_text">今月度売上</string>
     <string name="yen_text">￥</string>

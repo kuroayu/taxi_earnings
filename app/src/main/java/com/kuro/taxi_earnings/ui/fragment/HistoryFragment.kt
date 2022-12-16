@@ -1,7 +1,10 @@
 package com.kuro.taxi_earnings.ui.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +18,7 @@ import com.kuro.taxi_earnings.HistoryAdapter
 import com.kuro.taxi_earnings.R
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.properties.Delegates
 
 
 class HistoryFragment : Fragment() {
