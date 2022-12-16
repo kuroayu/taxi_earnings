@@ -2,47 +2,91 @@ package com.kuro.taxi_earnings.ui.fragment
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.NumberPicker
 import androidx.fragment.app.DialogFragment
 import com.kuro.taxi_earnings.R
+import java.lang.ClassCastException
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import kotlin.properties.Delegates
 
-//月度区分用NumberPicker
-class NumberPickerDialog:DialogFragment() {
+//月度区分用NumberPicker:yyyyMM
+class NumberPickerDialog():DialogFragment(){
 
     private lateinit var dialogView: View
+
+    private lateinit var listener: NoticeDialogListener // 親に渡すためのリスナー定義
+    private var selectedYearItem by Delegates.notNull<Int>() // 選択した年のアイテム格納
+    private var selectedMonthItem by Delegates.notNull<Int>()// 選択した年のアイテム格納
+
+
+    interface NoticeDialogListener {
+        fun onNumberPickerDialogPositiveClick(dialog: DialogFragment, selectedYearItem: Int, selectedMonthItem:Int)
+        fun onNumberPickerDialogNegativeClick(dialog: DialogFragment)
+    }
+
+    //onAttachメソッドを使用することで、親画面へイベントを伝搬することが出来るようになる？
+    //Activityに関連図けられたときに呼び出される
+    //ClassCastExceptionについて
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try{
+            val fragment = parentFragment
+            this.listener = fragment as NoticeDialogListener
+        }catch (e: ClassCastException){
+            throw  ClassCastException("$context must implement NoticeDialogListener")
+        }
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_numberpicker,null)
         val builder = AlertDialog.Builder(context)
 
         builder.setView(dialogView)
-        builder.setTitle("何月分の売上か設定してください")
-        builder.setMessage("2022年12月度の区分で設定した場合、今回の売上は2022年10月分に振り分けられます")
-        builder.setPositiveButton("OK"){dialog,id ->}
-        builder.setNegativeButton("キャンセル"){dialog,id ->}
+        builder.setTitle("月度区分の設定")
+        builder.setMessage("設定した年月に売上を振り分けます")
+        //setPositiveButton(テキストに表示する文字列、ボタンを押下後の処理)
+        builder.setPositiveButton("OK"){_,_ -> this.listener.onNumberPickerDialogPositiveClick(this,this.selectedYearItem,selectedMonthItem)}
+        builder.setNegativeButton("キャンセル"){_,_ -> this.listener.onNumberPickerDialogNegativeClick(this) }
 
         val current = LocalDateTime.now()
 
         val yearNumberPicker = dialogView.findViewById<NumberPicker>(R.id.yearNumberPicker)
-        yearNumberPicker.minValue = 2022
-        yearNumberPicker.maxValue = 2050
-        val yearFormatter = DateTimeFormatter.ofPattern("yyyy")
-        val thisYear = current.format(yearFormatter).toInt()
-        yearNumberPicker.value = thisYear
+        yearNumberPicker.setOnValueChangedListener(object :NumberPicker.OnValueChangeListener{
+            override fun onValueChange(picker: NumberPicker?, old: Int, new: Int) {
+                selectedYearItem = new
+            }
+        })
+        yearNumberPicker.minValue = current.year-1
+        yearNumberPicker.maxValue = current.year+30
+        yearNumberPicker.value = current.year
+        selectedYearItem = yearNumberPicker.value
 
         val monthNumberPicker = dialogView.findViewById<NumberPicker>(R.id.monthNumberPicker)
+        monthNumberPicker.setOnValueChangedListener(object :NumberPicker.OnValueChangeListener{
+            override fun onValueChange(picker: NumberPicker?, old: Int, new: Int) {
+                selectedMonthItem = new
+            }
+        })
         monthNumberPicker.minValue = 1
         monthNumberPicker.maxValue = 12
-        val monthFormatter = DateTimeFormatter.ofPattern("MM")
-        val thisMonth = current.format(monthFormatter).toInt()
-        monthNumberPicker.value = thisMonth
-
+        monthNumberPicker.value = current.monthValue
+        selectedMonthItem = monthNumberPicker.value
 
         return builder.create()
     }
+
+
+   override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+    }
+
+
 }

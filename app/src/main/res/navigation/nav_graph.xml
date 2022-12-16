@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/initialSettingFragment"
         android:name="com.kuro.taxi_earnings.ui.fragment.InitialSettingFragment"
-        android:label="InitialSettingFragment" />
+        android:label="@string/initialSetting_title" />
 
 
 </navigation>
