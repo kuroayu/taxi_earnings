@@ -1,34 +1,41 @@
 <resources>
     <string name="app_name">taxi_earnings</string>
+    <!--    画面タイトル-->
     <string name="input_button_text">管理</string>
     <string name="history_button_text">履歴</string>
     <string name="input_title">売上入力</string>
     <string name="initialSetting_title">初期設定</string>
     <string name="history_title">営業履歴</string>
-    <string name="total_text">今月度売上</string>
+    <string name="setting">設定</string>
+    <!--    パターン-->
     <string name="yen_text">￥</string>
-    <string name="goal_text">売上目標</string>
-    <string name="remaining_text">目標まで残り</string>
-    <string name="daily_plan_text">目標まで1日あたり</string>
-    <string name="days_text">残り営業日数</string>
-    <string name="total_days_text">今月度の出勤日数</string>
+    <string name="day_text">日</string>
+    <string name="times_text">回</string>
+    <string name="save">保存</string>
+    <string name="ok">OK</string>
+    <string name="cancel">キャンセル</string>
+    <!--    メッセージ-->
+    <string name="month_explanation">設定した年月に今月度の売上を振り分けます</string>
+    <string name="explanatory_text">トップ画面の設定から変更可能です</string>
+    <string name="edit_title">営業履歴の変更</string>
+    <string name="error_message">入力が完了していません</string>
+    <!--    テキスト-->
     <string name="target_amount">目標金額：</string>
     <string name="total_sales">売上合計：</string>
     <string name="average_sales">売上平均：</string>
     <string name="total_times">回数合計：</string>
     <string name="average_times">回数平均：</string>
+    <string name="total_text">今月度売上</string>
+    <string name="goal_text">売上目標</string>
+    <string name="remaining_text">目標まで残り</string>
+    <string name="daily_plan_text">目標まで1日あたり</string>
+    <string name="days_text">残り営業日数</string>
+    <string name="total_days_text">今月度の出勤日数</string>
     <string name="date">勤務日</string>
     <string name="sales">売上</string>
     <string name="times">営業回数</string>
     <string name="total_goal_sales">今月度の売上目標</string>
     <string name="month">月度区分</string>
-    <string name="setting">設定</string>
-    <string name="save">保存</string>
     <string name="setting_closing_date">今月度の締め日</string>
-    <string name="explanatory_text">トップ画面の設定から変更可能です</string>
-    <string name="edit_title">営業履歴の変更</string>
-    <string name="error_message">入力が完了していません</string>
-    <string name="yen">¥</string>
-
 
 </resources>

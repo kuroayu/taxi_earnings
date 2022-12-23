@@ -8,7 +8,7 @@ import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class DatePickerFragment(val editText: EditText) : DialogFragment(), DatePickerDialog.OnDateSetListener {
+class DatePickerDialogFragment(private val editText: EditText) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val calendar = Calendar.getInstance()
@@ -18,7 +18,7 @@ class DatePickerFragment(val editText: EditText) : DialogFragment(), DatePickerD
 
         val datePickerDialog = DatePickerDialog(
             requireContext(),
-            android.R.style.Theme_Holo_Dialog,
+            android.R.style.Theme_Holo_Light_Dialog,
             this,
             year,
             month,
@@ -31,6 +31,6 @@ class DatePickerFragment(val editText: EditText) : DialogFragment(), DatePickerD
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        editText.setText(String.format("%d/%02d", year, month+1))
+        editText.setText(String.format("%d年%02d月%02d日" , year, month+1,dayOfMonth))
     }
 }

@@ -19,7 +19,7 @@ import kotlin.properties.Delegates
  * month:1~12
  */
 
-class NumberPickerDialog:DialogFragment(){
+class NumberPickerDialogFragment:DialogFragment(){
 
     private lateinit var dialogView: View
 

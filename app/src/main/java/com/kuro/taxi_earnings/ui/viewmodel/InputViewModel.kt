@@ -1,56 +1,58 @@
 package com.kuro.taxi_earnings.ui.viewmodel
 
-import android.app.DatePickerDialog
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.kuro.taxi_earnings.data.database.SalesData
-import com.kuro.taxi_earnings.data.repository.InitialSettingRepository
 import com.kuro.taxi_earnings.data.repository.SalesRepository
-import com.kuro.taxi_earnings.ui.fragment.dummyData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import kotlinx.coroutines.launch
+import java.time.LocalDate
 import javax.inject.Inject
-import kotlin.coroutines.coroutineContext
-import kotlin.math.log
 
 @HiltViewModel
 class InputViewModel @Inject constructor(
     private val salesRepository: SalesRepository,
-    private val initialSettingRepository: InitialSettingRepository
     ) :ViewModel(){
 
-    val initialSettingGoalText = MutableLiveData<String>()
-    val dateEdit =MutableLiveData<String>()
+    var dateEdit =MutableLiveData<String>()
     val earningEdit =MutableLiveData<String>()
     val timesEdit =MutableLiveData<String>()
-    val monthEdit =MutableLiveData<String>()
+    val monthKbnEdit =MutableLiveData<String>()
 
+    //初期値セット(勤務日：現在日付)
+    fun init(){
+
+        val currentDay = LocalDate.now()
+        dateEdit.value = String.format("%d年%02d月%02d日",currentDay.year,currentDay.month.value,currentDay.dayOfMonth)
+
+    }
 
 
     fun onButtonClick() {
+        viewModelScope.launch {
 
-        val initialSettingGoalString = initialSettingGoalText.value.toString()
-        initialSettingRepository.inputInt("settingGoal",initialSettingGoalString)
+            //もし回数が未入力なら、０を足す
+            val data = SalesData(
+                dateEdit.value.toString(),
+                earningEdit.value!!.toInt(),
+                timesEdit.value!!.toInt(),
+                monthKbnEdit.value.toString())
 
-        //もし回数が未入力なら、０を足す
-        val data = SalesData(
-            dateEdit.value.toString(),
-            earningEdit.value!!.toInt(),
-            timesEdit.value!!.toInt(),
-            monthEdit.value.toString())
+            salesRepository.insert(data)
 
-      Log.d("salesData", data.toString())
-     //   salesRepository.insert(data)
-
+            Log.d("dataBase",salesRepository.allSalesData().toString())
+            Log.d("dataBase","database")
+        }
     }
 }
 
-//windws
+//
 //class InputViewModelFactory(
-//    private val salesRepository: SalesRepository
+//    private val salesRepository:SalesRepository
 //) : ViewModelProvider.Factory {
 //    override fun <T : ViewModel> create(modelClass: Class<T>): T {
 //        if (modelClass.isAssignableFrom(InputViewModel::class.java)) {

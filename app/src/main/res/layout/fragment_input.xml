@@ -58,7 +58,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             android:text="@={viewModel.dateEdit}"
-            android:hint="2022/08/22"
+            android:maxLength="11"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -94,15 +94,28 @@
             app:layout_constraintStart_toEndOf="@+id/earning_image"
             app:layout_constraintTop_toTopOf="@+id/earning_input_layout" />
 
+        <TextView
+            android:id="@+id/times_yen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/earning_input_layout"
+            app:layout_constraintBottom_toBottomOf="@id/earning_input_layout"
+            app:layout_constraintEnd_toStartOf="@id/earning_edit_text"
+            android:layout_marginEnd="5dp"
+            android:text="@string/yen_text"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
         <EditText
             android:id="@+id/earning_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:hint="0円"
+            android:hint="0"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:inputType="number"
+            android:maxLength="8"
             android:text="@={viewModel.earningEdit}"
             app:layout_constraintBottom_toBottomOf="@+id/earning_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -145,14 +158,27 @@
             android:id="@+id/times_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:hint="0回"
+            app:layout_constraintBottom_toBottomOf="@+id/times_input_layout"
+            app:layout_constraintEnd_toStartOf="@+id/times_text"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintTop_toTopOf="@+id/times_input_layout"
+            android:hint="0"
+            android:inputType="number"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:text="@={viewModel.timesEdit}"
-            app:layout_constraintBottom_toBottomOf="@+id/times_input_layout"
+            android:text="@={viewModel.timesEdit}"/>
+
+        <TextView
+            android:id="@+id/times_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/times_input_layout"
+            app:layout_constraintBottom_toBottomOf="@id/times_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/times_input_layout" />
+            android:layout_marginEnd="16dp"
+            android:text="@string/times_text"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -196,71 +222,13 @@
             android:layout_marginEnd="16dp"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:text="@={viewModel.monthEdit}"
+            android:text="@={viewModel.monthKbnEdit}"
             app:layout_constraintBottom_toBottomOf="@+id/month_input_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/month_input_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/goal_input_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/setting"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/goal_input_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/month_input_layout"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/border">
-
-        <ImageView
-            android:id="@+id/goal_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/ic_baseline_auto_graph_24"
-            app:layout_constraintBottom_toBottomOf="@+id/goal_input_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/goal_input_layout" />
-
-        <TextView
-            android:id="@+id/goal_input_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/total_goal_sales"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/goal_input_layout"
-            app:layout_constraintStart_toEndOf="@+id/goal_image"
-            app:layout_constraintTop_toTopOf="@+id/goal_input_layout" />
-
-        <EditText
-            android:id="@+id/goal_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:hint="0円"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:text="@={viewModel.initialSettingGoalText}"
-            app:layout_constraintBottom_toBottomOf="@+id/goal_input_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/goal_input_layout" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/input_save_button"
