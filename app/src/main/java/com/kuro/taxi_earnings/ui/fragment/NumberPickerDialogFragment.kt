@@ -13,24 +13,29 @@ import java.lang.ClassCastException
 import java.time.LocalDateTime
 import kotlin.properties.Delegates
 
-//月度区分用NumberPicker:yyyyMM
-class NumberPickerDialog():DialogFragment(){
+/**
+ * 売上月度区分用NumberPickerFragment：yyyy年MM月
+ * year:現在年-1 ~ 現在年+30
+ * month:1~12
+ */
+
+class NumberPickerDialog:DialogFragment(){
 
     private lateinit var dialogView: View
 
-    private lateinit var listener: NoticeDialogListener // 親に渡すためのリスナー定義
-    private var selectedYearItem by Delegates.notNull<Int>() // 選択した年のアイテム格納
-    private var selectedMonthItem by Delegates.notNull<Int>()// 選択した年のアイテム格納
-
+    // 親に渡すためのリスナー, 選択された年/月の定義
+    private lateinit var listener: NoticeDialogListener
+    private var selectedYearItem by Delegates.notNull<Int>()
+    private var selectedMonthItem by Delegates.notNull<Int>()
 
     interface NoticeDialogListener {
         fun onNumberPickerDialogPositiveClick(dialog: DialogFragment, selectedYearItem: Int, selectedMonthItem:Int)
         fun onNumberPickerDialogNegativeClick(dialog: DialogFragment)
     }
 
-    //onAttachメソッドを使用することで、親画面へイベントを伝搬することが出来るようになる？
-    //Activityに関連図けられたときに呼び出される
-    //ClassCastExceptionについて
+    //調べる：「onAttachメソッドを使用することで、親画面へイベントを伝搬することが出来るようになる」の意味
+    //　　　　親画面に子画面の値をセットする際の処理方法(listener,onValueChange 等)
+    //　　　　ClassCastException
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try{
@@ -46,14 +51,16 @@ class NumberPickerDialog():DialogFragment(){
         val builder = AlertDialog.Builder(context)
 
         builder.setView(dialogView)
-        builder.setTitle("月度区分の設定")
-        builder.setMessage("設定した年月に売上を振り分けます")
-        //setPositiveButton(テキストに表示する文字列、ボタンを押下後の処理)
-        builder.setPositiveButton("OK"){_,_ -> this.listener.onNumberPickerDialogPositiveClick(this,this.selectedYearItem,selectedMonthItem)}
-        builder.setNegativeButton("キャンセル"){_,_ -> this.listener.onNumberPickerDialogNegativeClick(this) }
+        builder.setTitle(R.string.month)
+        builder.setMessage(R.string.month_explanation)
+
+        //調べる：「SAM変換、setPositiveButton()の2つ目の関数を()の外に出してラムダ式で表している」の意味
+        builder.setPositiveButton(R.string.ok){_,_ -> this.listener.onNumberPickerDialogPositiveClick(this,this.selectedYearItem,selectedMonthItem)}
+        builder.setNegativeButton(R.string.cancel){_,_ -> this.listener.onNumberPickerDialogNegativeClick(this) }
 
         val current = LocalDateTime.now()
 
+        //yearNumberPicker作成
         val yearNumberPicker = dialogView.findViewById<NumberPicker>(R.id.yearNumberPicker)
         yearNumberPicker.setOnValueChangedListener(object :NumberPicker.OnValueChangeListener{
             override fun onValueChange(picker: NumberPicker?, old: Int, new: Int) {
@@ -65,6 +72,7 @@ class NumberPickerDialog():DialogFragment(){
         yearNumberPicker.value = current.year
         selectedYearItem = yearNumberPicker.value
 
+        //monthNumberPicker作成
         val monthNumberPicker = dialogView.findViewById<NumberPicker>(R.id.monthNumberPicker)
         monthNumberPicker.setOnValueChangedListener(object :NumberPicker.OnValueChangeListener{
             override fun onValueChange(picker: NumberPicker?, old: Int, new: Int) {
@@ -78,7 +86,6 @@ class NumberPickerDialog():DialogFragment(){
 
         return builder.create()
     }
-
 
    override fun onDestroy() {
         super.onDestroy()
