@@ -220,10 +220,10 @@
         app:layout_constraintTop_toTopOf="@+id/days_title"
         app:layout_constraintStart_toStartOf="@+id/daily_plan_yen"
         android:layout_marginTop="0dp"
-        android:text="0"
+        android:text="@={viewModel.settingDaysText}"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:maxLength="2"/>
+        android:maxLength="60"/>
 
     <TextView
         android:id="@+id/days_day"

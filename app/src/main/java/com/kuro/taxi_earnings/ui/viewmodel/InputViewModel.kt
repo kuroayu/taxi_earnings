@@ -16,18 +16,23 @@ import javax.inject.Inject
 @HiltViewModel
 class InputViewModel @Inject constructor(
     private val salesRepository: SalesRepository,
-    ) :ViewModel(){
+    ) :ViewModel() {
 
-    var dateEdit =MutableLiveData<String>()
-    val earningEdit =MutableLiveData<String>()
-    val timesEdit =MutableLiveData<String>()
-    val monthKbnEdit =MutableLiveData<String>()
+    var dateEdit = MutableLiveData<String>()
+    val earningEdit = MutableLiveData<String>()
+    val timesEdit = MutableLiveData<String>()
+    val monthKbnEdit = MutableLiveData<String>()
 
     //初期値セット(勤務日：現在日付)
-    fun init(){
+    fun init() {
 
         val currentDay = LocalDate.now()
-        dateEdit.value = String.format("%d年%02d月%02d日",currentDay.year,currentDay.month.value,currentDay.dayOfMonth)
+        dateEdit.value = String.format(
+            "%d年%02d月%02d日",
+            currentDay.year,
+            currentDay.month.value,
+            currentDay.dayOfMonth
+        )
 
     }
 
@@ -40,14 +45,16 @@ class InputViewModel @Inject constructor(
                 dateEdit.value.toString(),
                 earningEdit.value!!.toInt(),
                 timesEdit.value!!.toInt(),
-                monthKbnEdit.value.toString())
+                monthKbnEdit.value.toString()
+            )
 
             salesRepository.insert(data)
 
-            Log.d("dataBase",salesRepository.allSalesData().toString())
-            Log.d("dataBase","database")
+            Log.d("dataBase", salesRepository.allSalesData().toString())
+            Log.d("dataBase", "database")
         }
     }
+
 }
 
 //

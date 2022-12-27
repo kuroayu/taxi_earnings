@@ -11,6 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -35,15 +36,6 @@ class DatabaseModule {
     fun providesSalesDao(database: SalesDatabase):SalesDao{
         return database.salesDao()
     }
+}
 
 
-    @Module
-    @InstallIn(SingletonComponent::class)
-    object providesSalesRepository{
-    @Singleton
-    @Provides
-     fun bindRepository(salesDao: SalesDao):SalesRepository{
-        return SalesRepository(salesDao)
-    }
-}
-}

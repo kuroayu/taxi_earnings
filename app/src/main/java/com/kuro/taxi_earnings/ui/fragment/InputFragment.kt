@@ -36,8 +36,7 @@ import kotlin.properties.Delegates
 @AndroidEntryPoint
 class InputFragment : Fragment() ,NumberPickerDialogFragment.NoticeDialogListener{
 
-    @Inject
-    lateinit var  database: SalesDatabase
+  //  @Inject lateinit var  database: SalesDatabase
 
     private val viewModel:InputViewModel by viewModels()
 
@@ -49,8 +48,8 @@ class InputFragment : Fragment() ,NumberPickerDialogFragment.NoticeDialogListene
     var goalPreferencesData by Delegates.notNull<Int>()
 
     override fun onNumberPickerDialogPositiveClick(dialog: DialogFragment, selectedYearItem: Int, selectedMonthItem:Int) {
-        val YYmm = selectedYearItem.toString() + "年" + selectedMonthItem.toString() + "月"
-        binding.monthEditText.setText(YYmm)
+        val selectedYearMonth = selectedYearItem.toString() + "年" + selectedMonthItem.toString() + "月"
+        binding.monthEditText.setText(selectedYearMonth)
     }
     override fun onNumberPickerDialogNegativeClick(dialog: DialogFragment) {
         return
