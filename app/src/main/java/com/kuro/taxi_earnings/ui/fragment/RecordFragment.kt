@@ -10,10 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.kuro.taxi_earnings.R
-import com.kuro.taxi_earnings.databinding.FragmentInputBinding
 import com.kuro.taxi_earnings.databinding.FragmentRecordBinding
 import com.kuro.taxi_earnings.ui.viewmodel.RecordViewModel
 import dagger.hilt.android.AndroidEntryPoint

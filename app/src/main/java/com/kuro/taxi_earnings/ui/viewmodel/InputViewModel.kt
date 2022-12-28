@@ -1,10 +1,8 @@
 package com.kuro.taxi_earnings.ui.viewmodel
 
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.kuro.taxi_earnings.data.database.SalesData
 import com.kuro.taxi_earnings.data.repository.SalesRepository
@@ -15,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InputViewModel @Inject constructor(
-    private val salesRepository: SalesRepository,
+    private val salesRepository: SalesRepository
     ) :ViewModel() {
 
     var dateEdit = MutableLiveData<String>()
@@ -36,7 +34,6 @@ class InputViewModel @Inject constructor(
 
     }
 
-
     fun onButtonClick() {
         viewModelScope.launch {
 
@@ -56,16 +53,3 @@ class InputViewModel @Inject constructor(
     }
 
 }
-
-//
-//class InputViewModelFactory(
-//    private val salesRepository:SalesRepository
-//) : ViewModelProvider.Factory {
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(InputViewModel::class.java)) {
-//            @Suppress("UNCHECKED_CAST")
-//            return InputViewModel(salesRepository) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class")
-//    }
-//}

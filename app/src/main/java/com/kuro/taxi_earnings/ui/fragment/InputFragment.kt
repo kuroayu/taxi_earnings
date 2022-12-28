@@ -11,21 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.kuro.taxi_earnings.R
-import com.kuro.taxi_earnings.data.database.SalesDao
-import com.kuro.taxi_earnings.data.database.SalesDatabase
-import com.kuro.taxi_earnings.data.repository.SalesRepository
 import com.kuro.taxi_earnings.databinding.FragmentInputBinding
-import com.kuro.taxi_earnings.di.DatabaseModule
-import com.kuro.taxi_earnings.ui.activity.MainApplication
 import com.kuro.taxi_earnings.ui.viewmodel.InputViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlin.properties.Delegates
 
 /**
@@ -35,8 +27,6 @@ import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class InputFragment : Fragment() ,NumberPickerDialogFragment.NoticeDialogListener{
-
-  //  @Inject lateinit var  database: SalesDatabase
 
     private val viewModel:InputViewModel by viewModels()
 
